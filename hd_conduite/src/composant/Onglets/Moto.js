@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Document from '../Document';
 
 const Moto = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.querySelector('.section-moto');
+      if (section && window.scrollY + window.innerHeight > section.offsetTop + section.clientHeight / 2) {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openSection, setOpenSection] = useState(null);
 
@@ -27,15 +40,20 @@ const Moto = () => {
         <h1 className="text-5xl font-extrabold text-center mb-12 text-red-500">Formules Permis Moto & Scooter</h1>
 
         {/* Grille avec deux colonnes */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className={`section-moto grid grid-cols-1 lg:grid-cols-3 gap-8 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* Colonne de gauche : Infos (2/3 de la largeur) */}
           <div className="lg:col-span-2">
             {/* Informations sur le permis A2 */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12 transform hover:scale-105 transition-transform duration-300">
               <h2 className="text-2xl font-bold text-red-500 mb-4">Permis Moto A2</h2>
-              <div className="w-full mb-4">
+              <div className="flex justify-center space-x-6 mb-12">
                 <img 
                   src="/assets/cb500.png" 
+                  alt="Permis Moto A2" 
+                  className="w-full h-72 object-cover rounded-lg cursor-pointer"
+                  onClick={openModal}/>
+                <img 
+                  src="/assets/moto_eleve.png" 
                   alt="Permis Moto A2" 
                   className="w-full h-72 object-cover rounded-lg cursor-pointer"
                   onClick={openModal}/>
@@ -49,7 +67,7 @@ const Moto = () => {
             </div>
 
             {/* Passerelle A2 vers A avec toggle */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('passerelleA2A')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('passerelleA2A')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Passerelle A2 vers A</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'passerelleA2A' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 350€</p>
@@ -63,7 +81,7 @@ const Moto = () => {
             </div>
 
             {/* Permis Scooter 125cc avec toggle */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('permis125cc')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('permis125cc')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Permis Scooter 125cc</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'permis125cc' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 350€</p>
@@ -79,7 +97,7 @@ const Moto = () => {
           </div>
 
           {/* Colonne de droite : Documents (1/3 de la largeur) */}
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
             <Document />
           </div>
         </div>

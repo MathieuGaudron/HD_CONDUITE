@@ -92,15 +92,6 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="relative group">
-              <Link
-                to="/contact"
-                onClick={closeMenu}
-                className="hover:text-red-600 block lg:inline-block relative after:absolute after:w-0 after:h-[2px] after:bg-red-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 after:ease-in-out group-hover:after:w-full"
-              >
-                CONTACT
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>

@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Document from '../Document';
 
 const Auto = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.querySelector('.section-infos');
+      if (section && window.scrollY + window.innerHeight > section.offsetTop + section.clientHeight / 2) {
+        setIsVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [openSection, setOpenSection] = useState(null);
 
   const toggleSection = (section) => {
@@ -10,6 +24,14 @@ const Auto = () => {
     } else {
       setOpenSection(section);
     }
+  };
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
   };
 
   return (
@@ -25,39 +47,35 @@ const Auto = () => {
         </div>
 
         {/* Images des véhicules */}
-        <div className="flex justify-center space-x-4 mb-12">
+        <div className="flex justify-center space-x-6 mb-12">
           <img 
             src="/assets/c3.png" 
             alt="Voiture C3"
-            className="w-full h-64 object-cover rounded-lg shadow-lg"
+            className="w-full h-64 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
             style={{ maxWidth: '550px' }}
+            onClick={() => openModal('/assets/c3.png')}
           />
           <img 
             src="/assets/c3_2.png" 
             alt="Voiture C3 2"
-            className="w-full h-64 object-cover rounded-lg shadow-lg"
+            className="w-full h-64 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
             style={{ maxWidth: '550px' }}
+            onClick={() => openModal('/assets/c3_2.png')}
           />
         </div>
 
         {/* Grille avec deux colonnes */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className={`section-infos grid grid-cols-1 lg:grid-cols-3 gap-8 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* Colonne de gauche : Infos (2/3 de la largeur) */}
           <div className="lg:col-span-2">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-red-500">Comprenant :</h2>
-              <ul className="list-disc list-inside text-gray-300 text-lg space-y-4">
-                <li>Forfait code</li>
-                <li>Livret d'apprentissage + mémo vérif</li>
-                <li>Évaluation de départ</li>
-                <li>Heures de conduite (de 8h à 20h du lundi au samedi)</li>
-                <li className="font-bold text-yellow-500 mt-4">FRAIS ADMINISTRATIFS : (INCLUS)</li>
-                <li className="text-gray-400 mt-2">FORFAIT CODE (INCLUS)</li>
-              </ul>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12 transform hover:scale-105 transition-transform duration-300">
+            <h2 className="text-2xl font-semibold mb-4 text-red-500">Heure d'Évaluation</h2>
+          <p className="text-lg">Prix : <span className="font-bold">50€</span></p>
+          <p className="text-gray-500">En supplément du forfait choisi.</p>
             </div>
 
             {/* Formules */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('formule10h')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('formule10h')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Formule 10H</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'formule10h' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 550€</p>
@@ -69,7 +87,7 @@ const Auto = () => {
               </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('formule20h')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('formule20h')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Formule 20H</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'formule20h' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 1100€</p>
@@ -82,7 +100,7 @@ const Auto = () => {
               </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('formule30h')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('formule30h')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Formule 30H</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'formule30h' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 1500€</p>
@@ -95,7 +113,7 @@ const Auto = () => {
               </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer" onClick={() => toggleSection('conduiteAccompagnee')}>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('conduiteAccompagnee')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Formule Conduite Accompagnée</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'conduiteAccompagnee' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                 <p className="text-lg font-semibold mb-2">Prix : 1250€</p>
@@ -112,10 +130,29 @@ const Auto = () => {
           </div>
 
           {/* Colonne de droite */}
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
             <Document />
           </div>
         </div>
+
+        {/* Modal */}
+        {selectedImage && (
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+            <div className="relative w-3/4 h-3/4">
+              <img
+                src={selectedImage}
+                alt="Voiture Enlarged"
+                className="w-full h-full object-cover rounded-lg shadow-lg"
+              />
+              <button
+                onClick={closeModal}
+                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
