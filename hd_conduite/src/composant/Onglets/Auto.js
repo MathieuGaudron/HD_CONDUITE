@@ -47,21 +47,17 @@ const Auto = () => {
         </div>
 
         {/* Images des véhicules */}
-        <div className="flex justify-center space-x-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           <img 
             src="/assets/c3.png" 
             alt="Voiture C3"
-            className="w-full h-64 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-            style={{ maxWidth: '550px' }}
-            onClick={() => openModal('/assets/c3.png')}
-          />
+            className="w-full h-64 sm:h-72 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+            onClick={() => openModal('/assets/c3.png')}/>
           <img 
             src="/assets/c3_2.png" 
             alt="Voiture C3 2"
-            className="w-full h-64 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-            style={{ maxWidth: '550px' }}
-            onClick={() => openModal('/assets/c3_2.png')}
-          />
+            className="w-full h-64 sm:h-72 object-cover rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+            onClick={() => openModal('/assets/c3_2.png')}/>
         </div>
 
         {/* Grille avec deux colonnes */}
@@ -69,9 +65,9 @@ const Auto = () => {
           {/* Colonne de gauche : Infos (2/3 de la largeur) */}
           <div className="lg:col-span-2">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12 transform hover:scale-105 transition-transform duration-300">
-            <h2 className="text-2xl font-semibold mb-4 text-red-500">Heure d'Évaluation</h2>
-          <p className="text-lg">Prix : <span className="font-bold">50€</span></p>
-          <p className="text-gray-500">En supplément du forfait choisi.</p>
+              <h2 className="text-2xl font-semibold mb-4 text-red-500">Heure d'Évaluation</h2>
+              <p className="text-lg">Prix : <span className="font-bold">50€</span></p>
+              <p className="text-gray-500">En supplément du forfait choisi.</p>
             </div>
 
             {/* Formules */}
@@ -142,12 +138,10 @@ const Auto = () => {
               <img
                 src={selectedImage}
                 alt="Voiture Enlarged"
-                className="w-full h-full object-cover rounded-lg shadow-lg"
-              />
+                className="w-full h-full object-cover rounded-lg shadow-lg"/>
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center"
-              >
+                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center">
                 &times;
               </button>
             </div>

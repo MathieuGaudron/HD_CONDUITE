@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="relative min-h-screen">
-        {/* Navbar */}
+
         <Navbar />
 
         <div
@@ -30,6 +30,7 @@ function App() {
               </Routes>
             </div>
           </div>
+          
           <Footer />
           
         </div>

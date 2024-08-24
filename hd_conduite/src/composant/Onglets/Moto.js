@@ -3,6 +3,7 @@ import Document from '../Document';
 
 const Moto = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,16 +16,7 @@ const Moto = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [openSection, setOpenSection] = useState(null);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   const toggleSection = (section) => {
     if (openSection === section) {
@@ -32,6 +24,14 @@ const Moto = () => {
     } else {
       setOpenSection(section);
     }
+  };
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
   };
 
   return (
@@ -46,17 +46,19 @@ const Moto = () => {
             {/* Informations sur le permis A2 */}
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12 transform hover:scale-105 transition-transform duration-300">
               <h2 className="text-2xl font-bold text-red-500 mb-4">Permis Moto A2</h2>
-              <div className="flex justify-center space-x-6 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
                 <img 
                   src="/assets/cb500.png" 
                   alt="Permis Moto A2" 
-                  className="w-full h-72 object-cover rounded-lg cursor-pointer"
-                  onClick={openModal}/>
+                  className="w-full h-64 sm:h-72 object-cover rounded-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+                  onClick={() => openModal('/assets/cb500.png')}
+                />
                 <img 
                   src="/assets/moto_eleve.png" 
                   alt="Permis Moto A2" 
-                  className="w-full h-72 object-cover rounded-lg cursor-pointer"
-                  onClick={openModal}/>
+                  className="w-full h-64 sm:h-72 object-cover rounded-lg cursor-pointer transform hover:scale-105 transition-transform duration-300"
+                  onClick={() => openModal('/assets/moto_eleve.png')}
+                />
               </div>
               <p className="text-lg font-semibold mb-2">Prix : 790€</p>
               <ul className="list-disc list-inside text-gray-200">
@@ -103,16 +105,18 @@ const Moto = () => {
         </div>
 
         {/* Modal */}
-        {isModalOpen && (
+        {selectedImage && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
             <div className="relative w-3/4 h-3/4">
               <img
-                src="/assets/cb500.png"
-                alt="Moto A2 Enlarged"
-                className="w-full h-full object-cover rounded-lg shadow-lg"/>
+                src={selectedImage}
+                alt="Moto Enlarged"
+                className="w-full h-full object-cover rounded-lg shadow-lg"
+              />
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center">
+                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center"
+              >
                 &times;
               </button>
             </div>

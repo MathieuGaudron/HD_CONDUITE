@@ -70,8 +70,8 @@ const Accueil = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg mt-4"
-            ></iframe>
+              className="rounded-lg mt-4">
+            </iframe>
           </div>
 
           {/* Deuxième Auto-école (Livry-Gargan) */}
@@ -103,8 +103,8 @@ const Accueil = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg mt-4"
-            ></iframe>
+              className="rounded-lg mt-4">
+            </iframe>
           </div>
         </div>
 
@@ -130,12 +130,10 @@ const Accueil = () => {
               <img
                 src={selectedImage}
                 alt="Aperçu"
-                className="w-full h-full object-cover rounded-lg shadow-lg"
-              />
+                className="w-full h-full object-cover rounded-lg shadow-lg"/>
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center"
-              >
+                className="absolute top-2 right-2 text-white text-2xl font-bold bg-red-500 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center">
                 &times;
               </button>
             </div>
