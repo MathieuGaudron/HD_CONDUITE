@@ -31,7 +31,7 @@ const Accueil = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen p-10">
       <div className="max-w-7xl mx-auto">
-        {/* Section d'Introduction */}
+
         <div className="text-center mb-12 animate-fadeIn">
           <h1 className="text-5xl font-extrabold mb-4 text-red-500">Bienvenue chez HD CONDUITE</h1>
           <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
@@ -39,9 +39,9 @@ const Accueil = () => {
           </p>
         </div>
 
-        {/* Section des Emplacements */}
+
         <div className={`section-emplacements grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* Première Auto-école (Télégraphe) */}
+
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => openModal(images.telegraphe)}>
             <h3 className="text-2xl font-bold text-red-500">HD CONDUITE - Paris 20ème</h3>
             <img src={images.telegraphe} alt="HD Conduite Télégraphe" className="w-full h-64 object-cover rounded-lg mt-4" />
@@ -60,7 +60,7 @@ const Accueil = () => {
               Mardi au Vendredi : 11h - 14h | 15h - 19h<br />
               Samedi : 10h - 14h
             </p>
-            {/* Emplacement Google Maps pour Télégraphe */}
+
             <iframe
               title="HD Conduite Paris 20ème"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5248.448389343!2d2.3944835878566724!3d48.87300249742143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66d9653390c37%3A0x4bd097c3d12c3fd3!2s28%20Rue%20du%20T%C3%A9l%C3%A9graphe%2C%2075020%20Paris%2C%20France!5e0!3m2!1sfr!2sus!4v1724453342499!5m2!1sfr!2sus"
@@ -74,7 +74,7 @@ const Accueil = () => {
             </iframe>
           </div>
 
-          {/* Deuxième Auto-école (Livry-Gargan) */}
+
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => openModal(images.livry)}>
             <h3 className="text-2xl font-bold text-red-500">HD CONDUITE - Livry-Gargan</h3>
             <img src={images.livry} alt="HD Conduite Livry-Gargan" className="w-full h-64 object-cover rounded-lg mt-4" />
@@ -93,7 +93,7 @@ const Accueil = () => {
               Mardi au Vendredi : 10h - 13h | 15h - 19h<br />
               Samedi : 10h - 15h
             </p>
-            {/* Emplacement Google Maps pour Livry-Gargan */}
+
             <iframe
               title="HD Conduite Livry-Gargan"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.2292862008258!2d2.518056176308911!3d48.91102367133936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e613bd05ee8031%3A0x6a6daa3ea005a87a!2s38%20Bd%20Chanzy%2C%2093190%20Livry-Gargan%2C%20France!5e0!3m2!1sfr!2sus!4v1724452746316!5m2!1sfr!2sus"
@@ -108,7 +108,7 @@ const Accueil = () => {
           </div>
         </div>
 
-        {/* Section du Financement */}
+
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transform hover:scale-105 transition-transform duration-300">
           <h2 className="text-3xl font-bold text-red-500 mb-6">Financement Possible</h2>
           <div className="flex justify-center items-center space-x-6 mb-4">
@@ -123,7 +123,6 @@ const Accueil = () => {
           </div>
         </div>
 
-        {/* Modal */}
         {selectedImage && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
             <div className="relative w-1/2 h-1/2">

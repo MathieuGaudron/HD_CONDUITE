@@ -41,12 +41,11 @@ const Auto = () => {
           Permis B Manuelle / Automatique
         </h1>
 
-        {/* Information sur les tarifs */}
-        <div className="bg-yellow-500 text-gray-900 font-semibold p-4 rounded-lg text-center mb-12 shadow-lg">
+          <div className="bg-yellow-500 text-gray-900 font-semibold p-4 rounded-lg text-center mb-12 shadow-lg">
           <p className="text-2xl">Les tarifs pour les boîtes manuelle et automatique sont au même prix !</p>
         </div>
 
-        {/* Images des véhicules */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           <img 
             src="/assets/c3.png" 
@@ -60,9 +59,9 @@ const Auto = () => {
             onClick={() => openModal('/assets/c3_2.png')}/>
         </div>
 
-        {/* Grille avec deux colonnes */}
+
         <div className={`section-infos grid grid-cols-1 lg:grid-cols-3 gap-8 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* Colonne de gauche : Infos (2/3 de la largeur) */}
+
           <div className="lg:col-span-2">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-12 transform hover:scale-105 transition-transform duration-300">
               <h2 className="text-2xl font-semibold mb-4 text-red-500">Heure d'Évaluation</h2>
@@ -70,7 +69,6 @@ const Auto = () => {
               <p className="text-gray-500">En supplément du forfait choisi.</p>
             </div>
 
-            {/* Formules */}
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={() => toggleSection('formule10h')}>
               <h2 className="text-2xl font-bold text-red-500 mb-4">Formule 10H</h2>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openSection === 'formule10h' ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -125,13 +123,11 @@ const Auto = () => {
             </div>
           </div>
 
-          {/* Colonne de droite */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
             <Document />
           </div>
         </div>
 
-        {/* Modal */}
         {selectedImage && (
           <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
             <div className="relative w-3/4 h-3/4">
