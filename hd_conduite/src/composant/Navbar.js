@@ -77,7 +77,6 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Desktop Menu */}
           <ul className="hidden lg:flex lg:space-x-8 text-lg font-semibold text-gray-300 space-y-2 lg:space-y-0">
             <li className="relative group">
               <Link
