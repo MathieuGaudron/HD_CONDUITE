@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-black text-gray-100">
+    <header className="bg-black text-gray-100 w-full">
       {/* Informations */}
       <div className="bg-gray-900 text-gray-400 py-2">
         <div className="max-w-5xl mx-auto flex justify-center items-center">
@@ -29,7 +29,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="bg-black shadow-md z-50">
+      <nav className="bg-black shadow-md w-full py-2 md:py-4">
+
         <div className="max-w-5xl mx-auto flex justify-between items-center p-2">
           <div className="text-3xl font-bold text-red-600">
             <Link to="/" onClick={closeMenu}>
